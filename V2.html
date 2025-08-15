@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Connect Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: url('DSC_0795.jpg') center center fixed;
+            background-size: cover;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+
+        /* Main container */
+        .main-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Section card styling */
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: scale(0.9);
+            opacity: 0.8;
+            transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .section-card.active {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-card.next {
+            transform: scale(0.95) translateY(20px);
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 200px;
+            margin: 0;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .hero-content {
+            max-width: 950px;
+            padding: 0 40px;
+            animation: fadeInUp 2s ease-in-out;
+            transform: translateY(-30px);
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-title strong {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-description {
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .hero-cta:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 120px 60px;
+            overflow: hidden;
+        }
+
+        .testimonials-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .testimonials-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 80px;
+            letter-spacing: -0.01em;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fafafa;
+            padding: 40px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 60px;
+        }
+
+        .services-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            font-size: 1rem;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+
+        .services-intro {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: 80px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .service-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+            background: #f8f8f8;
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        /* Vision Mission Section */
+        .vision-mission {
+            padding: 120px 60px;
+        }
+
+        .vision-mission-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 80px;
+        }
+
+        .vm-item {
+            padding: 60px 0;
+        }
+
+        .vm-label {
+            font-size: 1rem;
+            color: #999;
+            font-weight: 500;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .vm-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .vm-description {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Pillars Section */
+        .pillars {
+            padding: 120px 60px;
+        }
+
+        .pillars-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #1a1a1a;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pillar-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .pillar-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 120px 60px;
+        }
+
+        .team-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .team-leader {
+            background: #fafafa;
+            padding: 60px;
+            border-radius: 20px;
+            margin: 60px 0;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .leader-profile {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .leader-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .leader-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .leader-name {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .leader-role {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .leader-bio {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 60px;
+            background: rgba(26, 26, 26, 0.95);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 48px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .contact-value a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-40px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding-top: 80px;
+                min-height: 100vh;
+            }
+            
+            .hero-content {
+                padding: 0 20px;
+                transform: translateY(-20px);
+            }
+            
+            .testimonials-content,
+            .services-content,
+            .vision-mission-content,
+            .pillars-content,
+            .team-content,
+            .contact-content {
+                padding: 0 20px !important;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .vm-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .leader-profile {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .leader-info {
+                text-align: center;
+            }
+            
+            .leader-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .hero-content {
+                transform: translateY(-40px);
+            }
+            /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-radius: 0 0 20px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 15px 0;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: #00BCD4;
+        }
+
+        /* Statistics Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #00BCD4;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .btn {
+                min-width: 200px;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .email-input {
+                min-width: 100%;
+            }
+
+            .programs-grid,
+            .values-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .glass-card,
+            .program-card,
+            .team-member {
+                padding: 25px;
+            }
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">CCA</div>
+                    <span>Creative Connect Africa</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#pillars">Pillars</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <div class="mobile-nav" id="mobileNav">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#pillars">Pillars</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    
+                <button class="nav-cta">Get Started</button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <strong>BUILDING THE FUTURE</strong>
+                    of African Creative Excellence
+                </h1>
+                <p class="hero-subtitle">
+                    Aligning Minds,<br>
+                    Empowering Creatives.
+                </p>
+                <p class="hero-description">
+                    Creative Connect Africa is a wellness-driven creative empowerment initiative dedicated to advancing mental health support, capacity building, and socio-economic inclusion for creatives across Africa.
+                </p>
+                <button class="hero-cta">Start Your Journey</button>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials section-card">
+            <div class="testimonials-content fade-in">
+                <h2 class="testimonials-title">
+                    Transforming African Creative Communities
+                </h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "As a therapist, I've seen firsthand how Creative Connect Africa bridges the gap between mental health support and creative expression. Their holistic approach empowers artists to heal while nurturing their craft."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="therapist.png" alt="Ebere Okonkwo" class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Ebere Okonkwo</div>
+                                <div class="testimonial-role">Therapist and Founder of My Care Buddy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "Mental health education within creative communities is crucial for sustainable artistic growth. Creative Connect Africa's commitment to wellness creates a foundation where creativity can truly flourish."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="Therapist 2.png" alt="Toluse Dove Francis" class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Toluse Dove Francis</div>
+                                <div class="testimonial-role">Therapist and Mental Health Educator</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "From film production to mentoring emerging creatives, I've witnessed the transformative power of proper support systems. Creative Connect Africa provides the essential framework for artistic and personal development."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="Speaker.png" alt="Chimaka Ebochue" class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Chimaka Ebochue</div>
+                                <div class="testimonial-role">International Film/TV Producer & Mentor</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            "As an experimental artist, I understand the unique challenges of pushing creative boundaries. Creative Connect Africa's innovative approach to supporting artistic exploration while prioritizing mental wellness is revolutionary."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="SPeaker 2.png" alt="Ikechukwu Ezeigwe" class="testimonial-avatar">
+                            <div>
+                                <div class="testimonial-name">Ikechukwu Ezeigwe</div>
+                                <div class="testimonial-role">Experimental Artist & Creative Mentor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section-card" id="services">
+            <div class="services-content fade-in">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">What we create is built to connect</h2>
+                </div>
+                <p class="services-intro">
+                    Our services are crafted to turn ideas into transformative experiences, made with precision and care for the African creative community.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="IMG_3478.jpg" alt="Mental Health Advocacy" class="service-image">
+                        <h3 class="service-title">Mental Health Advocacy</h3>
+                        <p class="service-description">
+                            We provide comprehensive mental health support, awareness campaigns, therapy access, and wellness circles specifically designed for creatives.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <img src="IMG_3522.jpg" alt="Creative Empowerment" class="service-image">
+                        <h3 class="service-title">Creative Empowerment</h3>
+                        <p class="service-description">
+                            Through workshops, mentorships, and training programs, we build skills and enhance creative output across Africa.
+                        </p>
+                    </div>
+                    <div class="service-card">
+                        <img src="DSC_0814.jpg" alt="Community Building" class="service-image">
+                        <h3 class="service-title">Community Building</h3>
+                        <p class="service-description">
+                            We create safe, inclusive spaces for African creatives to connect, collaborate, and grow together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission Section -->
+        <section class="vision-mission section-card" id="about">
+            <div class="vision-mission-content fade-in">
+                <div class="vm-grid">
+                    <div class="vm-item">
+                        <div class="vm-label">Our Vision</div>
+                        <h3 class="vm-title">Building resilient creative communities</h3>
+                        <p class="vm-description">
+                            To build a mentally resilient and economically empowered creative community across Africa.
+                        </p>
+                    </div>
+                    <div class="vm-item">
+                        <div class="vm-label">Our Mission</div>
+                        <h3 class="vm-title">Creating safe spaces for growth</h3>
+                        <p class="vm-description">
+                            To create safe, inclusive, and sustainable spaces for African creatives to thrive through mental health advocacy, creative empowerment, and access to growth opportunities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pillars Section -->
+        <section class="pillars section-card" id="pillars">
+            <div class="pillars-content fade-in">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">Our Core Pillars</h2>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Mental Health Advocacy</h3>
+                        <p class="pillar-description">
+                            Providing mental health awareness campaigns, therapy access, and wellness circles for creatives.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Creative Empowerment</h3>
+                        <p class="pillar-description">
+                            Workshops, mentorships, and training programs designed to build skills and enhance creative output.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Tech for Mental Health</h3>
+                        <p class="pillar-description">
+                            Development of the CreativeConnect mental health app and digital resource hub.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Community & Advocacy</h3>
+                        <p class="pillar-description">
+                            Grassroots engagement and policy advocacy to integrate mental health into Africa's creative economy.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Economic Inclusion</h3>
+                        <p class="pillar-description">
+                            Grants, incubation, and business support for creative entrepreneurs and projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team section-card" id="team">
+            <div class="team-content fade-in">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">Leadership & Partners</h2>
+                </div>
+                <div class="team-leader">
+                    <div class="leader-profile">
+                        <img src="DSC_0820.jpg" alt="Mr. John Eloka - Founder & Advocate Director" class="leader-photo">
+                        <div class="leader-info">
+                            <h3 class="leader-name">Mr. John Eloka</h3>
+                            <p class="leader-role">Founder & Advocate Director</p>
+                            <p class="leader-bio">
+                                Visual storyteller, mental health advocate, and creative entrepreneur leading the charge for mental wellness in African creative communities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-top: 40px;">
+                    Creative Connect Africa is led by a team of mental health advocates, creative professionals, and program managers with cross-sectoral expertise, partnering with Mind Art Display Studio, Blue Vision Media, creative industry hubs, schools, mental health professionals, and community organizations.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section-card" id="contact">
+            <div class="contact-content fade-in">
+                <h2 class="contact-title">Let's talk</h2>
+                <p class="contact-description">
+                    Ready to join our movement? Whether you're a creative seeking support, a student exploring opportunities, or an ally wanting to contribute to mental wellness in the creative community.
+                </p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:info@creativeconnect.africa">info@creativeconnect.africa</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Website</div>
+                        <div class="contact-value">
+                            <a href="#">www.creativeconnect.africa</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Social</div>
+                        <div class="contact-value">@creativeconnectafrica</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll observation for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(250, 250, 250, 0.98)';
+            } else {
+                nav.style.background = 'rgba(250, 250, 250, 0.95)';
+            }
+        });
+
+        // Button interactions
+        document.querySelectorAll('button:not(.carousel-btn)').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Add click effect
+                this.style.transform = 'translateY(0px)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Section card scroll animations
+        const sectionCards = document.querySelectorAll('.section-card');
+        
+        function updateSectionCards() {
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            
+            sectionCards.forEach((card, index) => {
+                const cardRect = card.getBoundingClientRect();
+                const cardTop = cardRect.top + scrollY;
+                const cardBottom = cardTop + cardRect.height;
+                const cardCenter = cardTop + cardRect.height / 2;
+                
+                // Calculate visibility percentage
+                const visibleTop = Math.max(scrollY, cardTop);
+                const visibleBottom = Math.min(scrollY + windowHeight, cardBottom);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                const visibilityRatio = visibleHeight / Math.min(windowHeight, cardRect.height);
+                
+                // Remove all classes first
+                card.classList.remove('active', 'next');
+                
+                // Apply appropriate class based on scroll position
+                if (visibilityRatio > 0.5) {
+                    card.classList.add('active');
+                } else if (visibilityRatio > 0.2) {
+                    card.classList.add('next');
+                }
+            });
+        }
+        
+        // Initialize on page load
+        window.addEventListener('load', updateSectionCards);
+        
+        // Update on scroll
+        window.addEventListener('scroll', updateSectionCards);
+        
+        // Update on resize
+        window.addEventListener('resize', updateSectionCards);
+    </script>
+</body>
+</html>
