@@ -518,25 +518,25 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-content">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <div class="logo-icon">CCA</div>
                 <span>Creative Connect Africa</span>
             </a>
             <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="programs.html">Programs</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="programs">Programs</a></li>
+                <li><a href="team">Team</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-            <a href="start-journey.html" class="nav-cta">Get Started</a>
+            <a href="start-journey" class="nav-cta">Get Started</a>
         </div>
         <div class="mobile-nav" id="mobileNav">
-            <a href="about.html">About</a>
-            <a href="programs.html">Programs</a>
-            <a href="team.html">Team</a>
-            <a href="contact.html">Contact</a>
-            <a href="start-journey.html">Get Started</a>
+            <a href="about">About</a>
+            <a href="programs">Programs</a>
+            <a href="team">Team</a>
+            <a href="contact">Contact</a>
+            <a href="start-journey">Get Started</a>
         </div>
     </nav>
 
@@ -681,25 +681,25 @@
                 <div class="support-card">
                     <h3>🚨 Need Immediate Help?</h3>
                     <p>If you're experiencing a mental health crisis, access our Creative Care Line for immediate support from trained counselors.</p>
-                    <a href="contact.html" class="cta-button">Access Crisis Support</a>
+                    <a href="contact" class="cta-button">Access Crisis Support</a>
                 </div>
 
                 <div class="support-card">
                     <h3>🤝 Join Support Groups</h3>
                     <p>Connect with peer support groups where you can share experiences and learn from other creatives facing similar challenges.</p>
-                    <a href="community.html" class="cta-button">Join Groups</a>
+                    <a href="community" class="cta-button">Join Groups</a>
                 </div>
 
                 <div class="support-card">
                     <h3>📚 Access Resources</h3>
                     <p>Explore our library of mental health resources, workshops, and educational content designed specifically for creatives.</p>
-                    <a href="programs.html" class="cta-button">Browse Resources</a>
+                    <a href="programs" class="cta-button">Browse Resources</a>
                 </div>
 
                 <div class="support-card">
                     <h3>💬 Get In Touch</h3>
                     <p>Have questions or need personalized guidance? Our team is here to help you navigate your wellness journey.</p>
-                    <a href="contact.html" class="cta-button">Contact Us</a>
+                    <a href="contact" class="cta-button">Contact Us</a>
                 </div>
             </div>
 
@@ -739,7 +739,7 @@
             // Show immediate support message for crisis situations
             if (urgency === 'immediate') {
                 alert('We understand you need immediate support. Please contact our Creative Care Line immediately or reach out via our contact page. Your safety and wellbeing are our top priority.');
-                window.location.href = 'contact.html';
+                window.location.href = 'contact';
                 return;
             }
             
@@ -748,7 +748,7 @@
             
             // Optionally redirect to community page
             setTimeout(() => {
-                window.location.href = 'community.html';
+                window.location.href = 'community';
             }, 2000);
         });
 

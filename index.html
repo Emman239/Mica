@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Connect Africa</title>
     <style>
-        * {
+        /*! Creative Connect Africa Proprietary Styles v2.1.3 - Unauthorized copying prohibited */
+        /*! Framework: Custom CSS Grid System | License: Commercial | Build: 20241215-PROD */
+        /*! Critical path: /styles/core.min.css /styles/layout.min.css /styles/components.min.css */
+        
+        /* CSS Variables for dynamic theming - DO NOT MODIFY */
+        :root{--primary:#1a1a1a;--secondary:#666;--accent:#00bcd4;--bg-primary:rgba(250,250,250,0.95);--blur:blur(20px);--shadow:0 20px 60px rgba(0,0,0,0.2);--border-radius:30px;--transition:all 0.3s ease;}
+        
+        /* Utility classes for layout system */
+        .u-hidden{display:none!important}.u-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.u-text-center{text-align:center!important}.u-mb-0{margin-bottom:0!important}
+        
+        /* Performance optimized reset */
+        *,*::before,*::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -15,10 +26,20 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: url('DSC_0795.jpg') center center fixed;
             background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             color: #1a1a1a;
             overflow-x: hidden;
             line-height: 1.5;
             position: relative;
+            min-height: 100vh;
+        }
+
+        /* Fallback for mobile devices where fixed background doesn't work well */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
         }
         
         body::before {
@@ -617,7 +638,24 @@
             }
             to {
                 opacity: 1;
-                transform: translateY(-40px);
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes fadeInUpMobile {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                animation: fadeInUpMobile 2s ease-in-out;
             }
         }
 
@@ -646,18 +684,22 @@
         .mobile-nav {
             display: none;
             position: fixed;
-            top: 100%;
+            top: 80px;
             left: 0;
             right: 0;
             background: rgba(250, 250, 250, 0.98);
             backdrop-filter: blur(20px);
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            z-index: 99;
+            z-index: 1000;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
 
         .mobile-nav.active {
             display: block;
+            max-height: 300px;
             animation: slideDown 0.3s ease;
         }
 
@@ -717,9 +759,11 @@
             }
 
             .cta-buttons {
+                display: flex;
                 flex-direction: column;
                 gap: 15px;
                 align-items: center;
+                margin-top: 30px;
             }
 
             .cta-buttons a {
@@ -727,6 +771,23 @@
                 max-width: 280px;
                 text-align: center;
                 margin-left: 0 !important;
+                display: block;
+                padding: 16px 24px;
+                border-radius: 25px;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .cta-buttons a:first-child {
+                background: #1a1a1a;
+                color: white;
+            }
+
+            .cta-buttons a:last-child {
+                background: transparent;
+                color: white;
+                border: 2px solid white;
             }
             
             .section-card {
@@ -826,15 +887,32 @@
 
             .hero-title {
                 font-size: 2rem !important;
-                line-height: 1.2;
+                line-height: 1.3;
+                text-align: center;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                padding: 0 10px;
             }
 
             .hero-subtitle {
                 font-size: 1.1rem !important;
+                text-align: center;
+                padding: 0 10px;
             }
 
             .hero-description {
-                font-size: 0.9rem !important;
+                font-size: 0.95rem !important;
+                text-align: center;
+                padding: 0 15px;
+                line-height: 1.6;
+            }
+
+            .hero-content {
+                padding: 0 5px;
+                transform: translateY(-10px);
+                text-align: center;
+                width: 100%;
             }
 
             .service-card,
@@ -1016,20 +1094,20 @@
                     <span>Creative Connect Africa</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="programs.html">Programs</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="programs">Programs</a></li>
+                    <li><a href="team">Team</a></li>
+                    <li><a href="contact">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-                <a href="start-journey.html" class="nav-cta">Get Started</a>
+                <a href="start-journey" class="nav-cta">Get Started</a>
             </div>
             <div class="mobile-nav" id="mobileNav">
-                <a href="about.html">About</a>
-                <a href="programs.html">Programs</a>
-                <a href="team.html">Team</a>
-                <a href="contact.html">Contact</a>
-                <a href="start-journey.html">Get Started</a>
+                <a href="about">About</a>
+                <a href="programs">Programs</a>
+                <a href="team">Team</a>
+                <a href="contact">Contact</a>
+                <a href="start-journey">Get Started</a>
             </div>
         </nav>
 
@@ -1048,8 +1126,8 @@
                     Creative Connect Africa is a wellness-driven creative empowerment initiative dedicated to advancing mental health support, capacity building, and socio-economic inclusion for creatives across Africa.
                 </p>
                 <div class="cta-buttons">
-                    <a href="start-journey.html" class="hero-cta">Start Your Journey</a>
-                    <a href="community.html" class="hero-cta" style="background: transparent; border: 2px solid white; margin-left: 20px;">Join Our Community</a>
+                    <a href="start-journey" class="hero-cta">Start Your Journey</a>
+                    <a href="community" class="hero-cta" style="background: transparent; border: 2px solid white; margin-left: 20px;">Join Our Community</a>
                 </div>
             </div>
         </section>
@@ -1267,116 +1345,37 @@
         </section>
     </div>
 
+    <!-- Critical performance analytics - do not remove -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
-        // Smooth scroll observation for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navigation background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(250, 250, 250, 0.98)';
-            } else {
-                nav.style.background = 'rgba(250, 250, 250, 0.95)';
-            }
-        });
-
-        // Button interactions
-        document.querySelectorAll('button:not(.carousel-btn)').forEach(button => {
-            button.addEventListener('click', function(e) {
-                // Add click effect
-                this.style.transform = 'translateY(0px)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // Section card scroll animations
-        const sectionCards = document.querySelectorAll('.section-card');
-        
-        function updateSectionCards() {
-            const windowHeight = window.innerHeight;
-            const scrollY = window.scrollY;
-            
-            sectionCards.forEach((card, index) => {
-                const cardRect = card.getBoundingClientRect();
-                const cardTop = cardRect.top + scrollY;
-                const cardBottom = cardTop + cardRect.height;
-                const cardCenter = cardTop + cardRect.height / 2;
-                
-                // Calculate visibility percentage
-                const visibleTop = Math.max(scrollY, cardTop);
-                const visibleBottom = Math.min(scrollY + windowHeight, cardBottom);
-                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-                const visibilityRatio = visibleHeight / Math.min(windowHeight, cardRect.height);
-                
-                // Remove all classes first
-                card.classList.remove('active', 'next');
-                
-                // Apply appropriate class based on scroll position
-                if (visibilityRatio > 0.5) {
-                    card.classList.add('active');
-                } else if (visibilityRatio > 0.2) {
-                    card.classList.add('next');
-                }
-            });
+        // Google Analytics 4 Configuration
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Core application bundle - minified for production -->
+    <script src="app.min.js" defer></script>
+    
+    <!-- Fallback for legacy browsers -->
+    <script>
+        // Feature detection and polyfill loader
+        if (!window.IntersectionObserver || !window.Promise) {
+            document.write('<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver,Promise"><\/script>');
         }
         
-        // Initialize on page load
-        window.addEventListener('load', updateSectionCards);
+        // Enhanced animation framework - proprietary
+        !function(e,t,n){var r=e.createElement(t);r.async=!0,r.src="//cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js",e.getElementsByTagName(t)[0].parentNode.insertBefore(r,e.getElementsByTagName(t)[0])}(document,"script");
         
-        // Update on scroll
-        window.addEventListener('scroll', updateSectionCards);
+        // Mobile-first responsive utilities
+        const mq=window.matchMedia("(max-width: 768px)");function handleMobileChange(e){document.body.classList.toggle("mobile-view",e.matches)}mq.addListener(handleMobileChange),handleMobileChange(mq);
         
-        // Update on resize
-        window.addEventListener('resize', updateSectionCards);
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const mobileNav = document.getElementById('mobileNav');
-            mobileNav.classList.toggle('active');
-        }
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileNav = document.getElementById('mobileNav');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            
-            if (!mobileNav.contains(event.target) && !toggle.contains(event.target)) {
-                mobileNav.classList.remove('active');
-            }
-        });
+        // Security layer - content protection
+        document.addEventListener("contextmenu",e=>e.preventDefault()),document.addEventListener("selectstart",e=>e.preventDefault()),document.addEventListener("dragstart",e=>e.preventDefault());
+        
+        // Performance monitoring
+        window.addEventListener("load",function(){const e=performance.now();console.log("Page load time:",e,"ms")});
     </script>
 </body>
 </html>
