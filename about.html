@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Creative Connect Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: url('DSC_0795.jpg') center center fixed;
+            background-size: cover;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1a1a1a;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 60px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .highlight-box {
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border-left: 4px solid #1a1a1a;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-card {
+                margin: 20px 10px;
+                padding: 40px 30px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CCA</div>
+                <span>Creative Connect Africa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="start-journey.html" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="section-card">
+            <div class="page-header">
+                <h1 class="page-title">About Creative Connect Africa</h1>
+                <p class="page-subtitle">
+                    A wellness-driven creative empowerment initiative dedicated to advancing mental health support, capacity building, and socio-economic inclusion for creatives across Africa.
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3>Our Story</h3>
+                    <p>
+                        Creative Connect Africa emerged from a deep understanding of the mental health challenges facing creatives across the continent. Originally incubated under Mind Art Display Studio, we recognized that while Africa's creative sector is bursting with talent and innovation, many artists, musicians, writers, and creative entrepreneurs struggle with mental health issues that often go unaddressed.
+                    </p>
+                    <p>
+                        As a registered Non-Governmental Organisation (NGO) in Nigeria, we believe that mental wellness is key to unlocking creative excellence and driving long-term cultural and economic impact across Africa.
+                    </p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Our Philosophy</h3>
+                    <p>
+                        We believe that inclusive access to wellness tools is critical—which is why our platform, resources, and programs are open to everyone, including students, aspiring artists, and all supporters who align with our mission.
+                    </p>
+                    <p>
+                        Mental health advocacy shouldn't be a luxury or an afterthought in the creative industry. It should be foundational to how we nurture, develop, and sustain creative talent across Africa.
+                    </p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Our Vision & Mission</h3>
+                <div class="content-grid">
+                    <div>
+                        <h4 style="color: #1a1a1a; margin-bottom: 16px;">Vision</h4>
+                        <p>To build a mentally resilient and economically empowered creative community across Africa.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #1a1a1a; margin-bottom: 16px;">Mission</h4>
+                        <p>To create safe, inclusive, and sustainable spaces for African creatives to thrive through mental health advocacy, creative empowerment, and access to growth opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Who We Serve</h3>
+                <p>Our target audience spans across the vibrant African creative ecosystem:</p>
+                <ul style="font-size: 1.1rem; color: #666; line-height: 1.7; margin-left: 30px; margin-top: 20px;">
+                    <li>Young creatives (ages 18–35) across Africa</li>
+                    <li>Freelancers and creative entrepreneurs</li>
+                    <li>Students in creative fields</li>
+                    <li>Creatives in underserved communities</li>
+                    <li>General supporters of mental health and artistic innovation</li>
+                </ul>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <div class="stat-label">Core Pillars</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">54</span>
+                    <div class="stat-label">African Countries</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <div class="stat-label">Free Access</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Legal Status & Partnerships</h3>
+                <p>
+                    Creative Connect Africa operates as a registered Non-Governmental Organisation (NGO) in Nigeria, originally incubated under Mind Art Display Studio. We work closely with strategic partners including Blue Vision Media, creative industry hubs and schools, mental health professionals, and advocacy and community-based organizations across Africa.
+                </p>
+                <p>
+                    Our collaborative approach ensures that we can deliver comprehensive support that addresses both the creative and mental health needs of our community members.
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <h3 style="margin-bottom: 24px;">Ready to Join Our Community?</h3>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 30px;">
+                    Whether you're a creative seeking support, a student exploring opportunities, or an ally wanting to contribute to mental wellness in the creative community.
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="start-journey.html" class="nav-cta">Start Your Journey</a>
+                    <a href="community.html" class="nav-cta" style="background: transparent; color: #1a1a1a; border: 2px solid #1a1a1a;">Join Our Community</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

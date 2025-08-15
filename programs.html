@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programs - Creative Connect Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: url('DSC_0795.jpg') center center fixed;
+            background-size: cover;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1a1a1a;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 60px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .pillars-section {
+            margin-bottom: 80px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #1a1a1a;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pillar-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .pillar-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .initiatives-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .initiative-card {
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .initiative-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #1a1a1a;
+        }
+
+        .initiative-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .initiative-type {
+            background: #1a1a1a;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .initiative-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .initiative-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .initiative-features li {
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .initiative-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .coming-soon {
+            background: #666;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-card {
+                margin: 20px 10px;
+                padding: 40px 30px;
+            }
+            
+            .pillars-grid,
+            .initiatives-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CCA</div>
+                <span>Creative Connect Africa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="start-journey.html" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="section-card">
+            <div class="page-header">
+                <h1 class="page-title">Our Programs & Initiatives</h1>
+                <p class="page-subtitle">
+                    Comprehensive support systems designed to empower African creatives through mental health advocacy, skill development, community building, and economic opportunities.
+                </p>
+            </div>
+
+            <!-- Core Pillars -->
+            <div class="pillars-section">
+                <h2 style="font-size: 2.5rem; font-weight: 300; margin-bottom: 60px; text-align: center;">Our Core Pillars</h2>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Mental Health Advocacy & Wellness Support</h3>
+                        <p class="pillar-description">
+                            Comprehensive mental health awareness campaigns, therapy access, and wellness circles specifically designed for creatives. We provide culturally-relevant support that understands the unique challenges facing African artists and creative professionals.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Creative Empowerment & Capacity Building</h3>
+                        <p class="pillar-description">
+                            Workshops, mentorships, and training programs designed to build skills and enhance creative output. From technical skills to business development, we help creatives grow professionally while maintaining their artistic integrity.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Tech for Mental Health</h3>
+                        <p class="pillar-description">
+                            Development of the CreativeConnect mental health app and digital resource hub for easy, affordable, and culturally-relevant mental health support accessible across Africa.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Community & Advocacy</h3>
+                        <p class="pillar-description">
+                            Grassroots engagement and policy advocacy to integrate mental health into Africa's creative economy. We work to create systemic change that supports creative professionals at all levels.
+                        </p>
+                    </div>
+                    <div class="pillar-card">
+                        <h3 class="pillar-title">Economic Inclusion & Funding Access</h3>
+                        <p class="pillar-description">
+                            Grants, incubation, and business support for creative entrepreneurs and projects. We help bridge the gap between creative talent and economic opportunities across the continent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Initiatives -->
+            <div class="initiatives-section">
+                <h2>Key Initiatives</h2>
+                <div class="initiatives-grid">
+                    <div class="initiative-card">
+                        <div class="initiative-type">Support Groups</div>
+                        <h3 class="initiative-title">Creative Connect: Aligning Your Energy</h3>
+                        <p class="initiative-description">
+                            Mental health peer support groups designed specifically for African creatives. Safe spaces where artists can share experiences, learn coping strategies, and build supportive communities.
+                        </p>
+                        <ul class="initiative-features">
+                            <li>Weekly peer support sessions</li>
+                            <li>Professional facilitation</li>
+                            <li>Cross-disciplinary creative networking</li>
+                            <li>Wellness workshops and activities</li>
+                        </ul>
+                        <a href="community.html" class="cta-button">Join Support Groups</a>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-type">Digital Platform</div>
+                        <h3 class="initiative-title">MICA (MVP)</h3>
+                        <p class="initiative-description">
+                            A comprehensive mental health and community platform that will be freely accessible to creatives, students, and allies across Africa. Our flagship digital solution for scalable support.
+                        </p>
+                        <ul class="initiative-features">
+                            <li>24/7 mental health resources</li>
+                            <li>Community forums and networking</li>
+                            <li>Educational content and workshops</li>
+                            <li>Crisis support integration</li>
+                        </ul>
+                        <span class="coming-soon">Coming Soon</span>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-type">Crisis Support</div>
+                        <h3 class="initiative-title">Creative Care Line</h3>
+                        <p class="initiative-description">
+                            A dedicated hotline providing urgent mental health support for creatives in crisis. Professional counselors trained in creative industry challenges available when you need them most.
+                        </p>
+                        <ul class="initiative-features">
+                            <li>24/7 crisis intervention</li>
+                            <li>Creative industry-trained counselors</li>
+                            <li>Multilingual support</li>
+                            <li>Follow-up care coordination</li>
+                        </ul>
+                        <a href="contact.html" class="cta-button">Access Support</a>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-type">Education</div>
+                        <h3 class="initiative-title">Creative Connect Edu</h3>
+                        <p class="initiative-description">
+                            Comprehensive capacity-building program offering workshops, mentorships, and training sessions designed to enhance both creative skills and mental wellness awareness.
+                        </p>
+                        <ul class="initiative-features">
+                            <li>Skills development workshops</li>
+                            <li>One-on-one mentorship</li>
+                            <li>Business development training</li>
+                            <li>Mental health education</li>
+                        </ul>
+                        <a href="start-journey.html" class="cta-button">Enroll Now</a>
+                    </div>
+
+                    <div class="initiative-card">
+                        <div class="initiative-type">Advocacy</div>
+                        <h3 class="initiative-title">Art for Advocacy</h3>
+                        <p class="initiative-description">
+                            Using creative storytelling to promote social change and mental health awareness. Artists collaborate to create powerful content that drives policy change and social impact.
+                        </p>
+                        <ul class="initiative-features">
+                            <li>Creative campaign development</li>
+                            <li>Policy advocacy projects</li>
+                            <li>Community awareness initiatives</li>
+                            <li>Artist collaboration opportunities</li>
+                        </ul>
+                        <a href="community.html" class="cta-button">Get Involved</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 80px; padding: 40px; background: #f8f8f8; border-radius: 20px;">
+                <h3 style="margin-bottom: 24px;">Ready to Access Our Programs?</h3>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    All our programs and resources are freely accessible to creatives, students, and allies across Africa. Start your journey toward creative wellness today.
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="start-journey.html" class="cta-button">Start Your Journey</a>
+                    <a href="community.html" class="cta-button" style="background: transparent; color: #1a1a1a; border: 2px solid #1a1a1a;">Join Community</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

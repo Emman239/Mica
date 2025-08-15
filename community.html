@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Community - Creative Connect Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: url('DSC_0795.jpg') center center fixed;
+            background-size: cover;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 60px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .community-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .community-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .community-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #1a1a1a;
+        }
+
+        .community-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .community-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .community-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .community-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .community-features li {
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .community-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .join-button {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .join-button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .coming-soon {
+            background: #666;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .benefits-section {
+            background: #f8f8f8;
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+
+        .benefits-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .benefit-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .signup-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .signup-section h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .signup-section p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .submit-btn {
+            background: white;
+            color: #1a1a1a;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-card {
+                margin: 20px 10px;
+                padding: 40px 30px;
+            }
+            
+            .community-options,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CCA</div>
+                <span>Creative Connect Africa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="start-journey.html" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="section-card">
+            <div class="page-header">
+                <h1 class="page-title">Join Our Community</h1>
+                <p class="page-subtitle">
+                    Connect with a supportive network of African creatives committed to mental wellness, artistic growth, and community empowerment. Find your tribe and grow together.
+                </p>
+            </div>
+
+            <!-- Community Options -->
+            <div class="community-options">
+                <div class="community-card">
+                    <div class="community-icon">🤝</div>
+                    <h3 class="community-title">Support Groups</h3>
+                    <p class="community-description">
+                        Join peer support groups where creatives share experiences, coping strategies, and mutual encouragement in a safe, moderated environment.
+                    </p>
+                    <ul class="community-features">
+                        <li>Weekly virtual meetings</li>
+                        <li>Professional facilitation</li>
+                        <li>Confidential environment</li>
+                        <li>Cross-discipline networking</li>
+                        <li>Resource sharing</li>
+                    </ul>
+                    <a href="#signup" class="join-button">Join Support Groups</a>
+                </div>
+
+                <div class="community-card">
+                    <div class="community-icon">💬</div>
+                    <h3 class="community-title">Online Forums</h3>
+                    <p class="community-description">
+                        Participate in online discussions, share your work, get feedback, and connect with creatives across Africa through our digital community platform.
+                    </p>
+                    <ul class="community-features">
+                        <li>Creative showcases</li>
+                        <li>Industry discussions</li>
+                        <li>Collaboration opportunities</li>
+                        <li>24/7 community access</li>
+                        <li>Mentorship connections</li>
+                    </ul>
+                    <span class="coming-soon">Coming Soon</span>
+                </div>
+
+                <div class="community-card">
+                    <div class="community-icon">🎯</div>
+                    <h3 class="community-title">Advocacy Network</h3>
+                    <p class="community-description">
+                        Become part of our advocacy efforts to promote mental health awareness and policy change in the African creative industry.
+                    </p>
+                    <ul class="community-features">
+                        <li>Campaign participation</li>
+                        <li>Policy advocacy training</li>
+                        <li>Community organizing</li>
+                        <li>Media collaboration</li>
+                        <li>Social impact projects</li>
+                    </ul>
+                    <a href="#signup" class="join-button">Join Advocacy</a>
+                </div>
+
+                <div class="community-card">
+                    <div class="community-icon">📚</div>
+                    <h3 class="community-title">Learning Circles</h3>
+                    <p class="community-description">
+                        Participate in skill-sharing sessions, workshops, and educational programs designed to enhance both creative and mental wellness skills.
+                    </p>
+                    <ul class="community-features">
+                        <li>Skill-building workshops</li>
+                        <li>Peer learning sessions</li>
+                        <li>Expert-led masterclasses</li>
+                        <li>Certificate programs</li>
+                        <li>Progress tracking</li>
+                    </ul>
+                    <a href="#signup" class="join-button">Join Learning</a>
+                </div>
+
+                <div class="community-card">
+                    <div class="community-icon">🌟</div>
+                    <h3 class="community-title">Mentor Network</h3>
+                    <p class="community-description">
+                        Either receive mentorship from experienced creatives or become a mentor yourself, sharing your knowledge and experience with others.
+                    </p>
+                    <ul class="community-features">
+                        <li>One-on-one mentoring</li>
+                        <li>Group mentorship sessions</li>
+                        <li>Career guidance</li>
+                        <li>Industry connections</li>
+                        <li>Personal development</li>
+                    </ul>
+                    <a href="#signup" class="join-button">Join Mentorship</a>
+                </div>
+
+                <div class="community-card">
+                    <div class="community-icon">🎨</div>
+                    <h3 class="community-title">Creative Collaboratives</h3>
+                    <p class="community-description">
+                        Connect with other creatives for collaboration opportunities, joint projects, and collective artistic endeavors across disciplines.
+                    </p>
+                    <ul class="community-features">
+                        <li>Project matchmaking</li>
+                        <li>Collaborative spaces</li>
+                        <li>Resource pooling</li>
+                        <li>Exhibition opportunities</li>
+                        <li>Creative challenges</li>
+                    </ul>
+                    <a href="#signup" class="join-button">Join Collaboratives</a>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="benefits-section">
+                <h2>Why Join Our Community?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3 class="benefit-title">Safe Space</h3>
+                        <p class="benefit-description">
+                            A moderated, confidential environment where you can share freely without judgment.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌍</div>
+                        <h3 class="benefit-title">Pan-African Network</h3>
+                        <p class="benefit-description">
+                            Connect with creatives from across the continent, sharing diverse perspectives and experiences.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <h3 class="benefit-title">Growth Opportunities</h3>
+                        <p class="benefit-description">
+                            Access to workshops, mentorship, and resources that support both creative and personal development.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <h3 class="benefit-title">100% Free</h3>
+                        <p class="benefit-description">
+                            All community features and resources are completely free and accessible to everyone.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <h3 class="benefit-title">Purpose-Driven</h3>
+                        <p class="benefit-description">
+                            Be part of a movement that's creating real change in the African creative ecosystem.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🤗</div>
+                        <h3 class="benefit-title">Supportive Culture</h3>
+                        <p class="benefit-description">
+                            Experience genuine care and support from community members who understand your journey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signup Section -->
+            <div class="signup-section" id="signup">
+                <h2>Ready to Join?</h2>
+                <p>
+                    Take the first step toward joining a community that understands your creative journey and supports your mental wellness goals. Registration is free and takes just a few minutes.
+                </p>
+
+                <form class="signup-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="creative-field">Creative Field</label>
+                        <select id="creative-field" name="creative-field" required>
+                            <option value="">Select your primary field</option>
+                            <option value="visual-arts">Visual Arts</option>
+                            <option value="performing-arts">Performing Arts</option>
+                            <option value="writing">Writing & Literature</option>
+                            <option value="film-media">Film & Media</option>
+                            <option value="digital-arts">Digital Arts</option>
+                            <option value="crafts">Traditional Crafts</option>
+                            <option value="entrepreneurship">Creative Entrepreneurship</option>
+                            <option value="student">Student</option>
+                            <option value="supporter">Supporter/Ally</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Country/Region</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Nigeria, Ghana, Kenya" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="community-interest">Primary Community Interest</label>
+                        <select id="community-interest" name="community-interest" required>
+                            <option value="">Select your main interest</option>
+                            <option value="support-groups">Support Groups</option>
+                            <option value="advocacy">Advocacy Network</option>
+                            <option value="learning">Learning Circles</option>
+                            <option value="mentorship">Mentor Network</option>
+                            <option value="collaboration">Creative Collaboratives</option>
+                            <option value="all">All of the above</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Join Our Community</button>
+                </form>
+            </div>
+
+            <!-- Additional Info -->
+            <div style="margin-top: 60px; text-align: center; padding: 40px; background: #f8f8f8; border-radius: 16px;">
+                <h3 style="margin-bottom: 20px; color: #1a1a1a;">Questions About Joining?</h3>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.7; max-width: 700px; margin: 0 auto 20px;">
+                    If you have questions about our community, need help with registration, or want to learn more about specific programs, our team is here to help.
+                </p>
+                <a href="contact.html" style="background: #1a1a1a; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 500;">Contact Our Team</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.querySelector('.signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const interest = document.getElementById('community-interest').value;
+            
+            if (name && email && interest) {
+                alert(`Thank you ${name}! Welcome to the Creative Connect Africa community. We'll send you an email at ${email} with next steps and information about joining your selected community groups.`);
+                
+                // Optionally redirect or show success message
+                setTimeout(() => {
+                    window.location.href = 'start-journey.html';
+                }, 2000);
+            }
+        });
+
+        // Smooth scroll to signup
+        document.querySelectorAll('a[href="#signup"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('signup').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

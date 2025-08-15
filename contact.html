@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Creative Connect Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: url('DSC_0795.jpg') center center fixed;
+            background-size: cover;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1a1a1a;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 60px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .contact-info {
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-value a:hover {
+            color: #666;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .support-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .support-section h3 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .support-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emergency-notice {
+            background: #ff4444;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .emergency-notice h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .emergency-notice p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .cta-button {
+            background: white;
+            color: #1a1a1a;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-card {
+                margin: 20px 10px;
+                padding: 40px 30px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CCA</div>
+                <span>Creative Connect Africa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <a href="start-journey.html" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="section-card">
+            <div class="page-header">
+                <h1 class="page-title">Get In Touch</h1>
+                <p class="page-subtitle">
+                    Ready to join our movement? Whether you're a creative seeking support, a student exploring opportunities, or an ally wanting to contribute to mental wellness in the creative community.
+                </p>
+            </div>
+
+            <!-- Emergency Notice -->
+            <div class="emergency-notice">
+                <h4>🚨 Crisis Support Available 24/7</h4>
+                <p>If you're experiencing a mental health crisis, please reach out immediately via our Creative Care Line or contact emergency services in your area.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:info@creativeconnect.africa">info@creativeconnect.africa</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Website</div>
+                        <div class="contact-value">
+                            <a href="#" target="_blank">www.creativeconnect.africa</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Social Media</div>
+                        <div class="contact-value">@creativeconnectafrica</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Legal Status</div>
+                        <div class="contact-value">Registered NGO in Nigeria</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Office Hours</div>
+                        <div class="contact-value">Monday - Friday, 9:00 AM - 6:00 PM (WAT)</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Crisis Support</div>
+                        <div class="contact-value">Creative Care Line - 24/7</div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">Your Role/Interest</label>
+                            <select id="role" name="role">
+                                <option value="">Select your role</option>
+                                <option value="creative">Creative Professional</option>
+                                <option value="student">Student</option>
+                                <option value="mental-health">Mental Health Professional</option>
+                                <option value="organization">Organization/Institution</option>
+                                <option value="volunteer">Volunteer/Supporter</option>
+                                <option value="media">Media/Press</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Brief subject line">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us how we can help you or how you'd like to get involved..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Support Section -->
+            <div class="support-section">
+                <h3>Need Immediate Support?</h3>
+                <p>
+                    If you're experiencing a mental health crisis or need immediate support, don't wait for an email response. Access our Creative Care Line or connect with our community support groups.
+                </p>
+                <div>
+                    <a href="start-journey.html" class="cta-button">Access Support Now</a>
+                    <a href="community.html" class="cta-button">Join Support Groups</a>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div style="margin-top: 60px; text-align: center; padding: 40px; background: #f8f8f8; border-radius: 16px;">
+                <h3 style="margin-bottom: 20px; color: #1a1a1a;">Partnership & Collaboration Inquiries</h3>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.7; max-width: 700px; margin: 0 auto 20px;">
+                    We're always open to partnerships with organizations, institutions, and individuals who share our mission of supporting mental wellness in the African creative community. Whether you're a mental health organization, creative industry hub, educational institution, or community group, we'd love to explore collaboration opportunities.
+                </p>
+                <p style="font-size: 1rem; color: #888;">
+                    Please use the contact form above and select "Organization/Institution" to start the conversation.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

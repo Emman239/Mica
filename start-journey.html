@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Journey - Creative Connect Africa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: url('DSC_0795.jpg') center center fixed;
+            background-size: cover;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .nav-cta {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 60px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .step-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #1a1a1a;
+        }
+
+        .step-number {
+            background: #1a1a1a;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 24px;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .step-action {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .step-action:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .assessment-section {
+            background: #f8f8f8;
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+
+        .assessment-section h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .assessment-section p {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .assessment-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+
+        .submit-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .support-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .support-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .support-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .support-card .cta-button {
+            background: white;
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .support-card .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-card {
+                margin: 20px 10px;
+                padding: 40px 30px;
+            }
+            
+            .journey-steps,
+            .support-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">CCA</div>
+                <span>Creative Connect Africa</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="start-journey.html" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="section-card">
+            <div class="page-header">
+                <h1 class="page-title">Start Your Wellness Journey</h1>
+                <p class="page-subtitle">
+                    Take the first step toward building mental resilience while nurturing your creative potential. Our personalized approach ensures you get the support that's right for your unique journey.
+                </p>
+            </div>
+
+            <!-- Journey Steps -->
+            <div class="journey-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Complete Assessment</h3>
+                    <p class="step-description">
+                        Help us understand your creative background, current challenges, and wellness goals through our brief assessment.
+                    </p>
+                    <a href="#assessment" class="step-action">Start Assessment</a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Get Personalized Plan</h3>
+                    <p class="step-description">
+                        Based on your assessment, we'll recommend programs, resources, and support options tailored to your needs.
+                    </p>
+                    <span class="step-action" style="background: #666; cursor: default;">After Assessment</span>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Access Support</h3>
+                    <p class="step-description">
+                        Join support groups, access resources, and connect with our community of creatives on similar journeys.
+                    </p>
+                    <span class="step-action" style="background: #666; cursor: default;">After Plan</span>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Grow & Thrive</h3>
+                    <p class="step-description">
+                        Develop resilience, enhance your creative output, and contribute to a supportive community ecosystem.
+                    </p>
+                    <span class="step-action" style="background: #666; cursor: default;">Ongoing</span>
+                </div>
+            </div>
+
+            <!-- Assessment Section -->
+            <div class="assessment-section" id="assessment">
+                <h2>Creative Wellness Assessment</h2>
+                <p>
+                    This brief assessment helps us understand your background and connect you with the most relevant resources and support options. All information is confidential and used solely to improve your experience.
+                </p>
+
+                <form class="assessment-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="creative-field">Primary Creative Field</label>
+                        <select id="creative-field" name="creative-field" required>
+                            <option value="">Select your primary field</option>
+                            <option value="visual-arts">Visual Arts (Painting, Photography, Design)</option>
+                            <option value="performing-arts">Performing Arts (Music, Dance, Theater)</option>
+                            <option value="writing">Writing & Literature</option>
+                            <option value="film-media">Film & Media Production</option>
+                            <option value="digital-arts">Digital Arts & Technology</option>
+                            <option value="crafts">Traditional Crafts & Artisans</option>
+                            <option value="entrepreneurship">Creative Entrepreneurship</option>
+                            <option value="student">Student (Creative Fields)</option>
+                            <option value="supporter">Supporter/Ally</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience-level">Experience Level</label>
+                        <select id="experience-level" name="experience-level">
+                            <option value="">Select your experience level</option>
+                            <option value="beginner">Beginner (0-2 years)</option>
+                            <option value="intermediate">Intermediate (2-5 years)</option>
+                            <option value="experienced">Experienced (5-10 years)</option>
+                            <option value="veteran">Veteran (10+ years)</option>
+                            <option value="student">Currently studying</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Country/Region</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Nigeria, Ghana, Kenya">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Areas of Interest (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="mental-health" name="interests[]" value="mental-health">
+                                <label for="mental-health">Mental Health Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="skill-building" name="interests[]" value="skill-building">
+                                <label for="skill-building">Skill Building</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="networking" name="interests[]" value="networking">
+                                <label for="networking">Networking</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="mentorship" name="interests[]" value="mentorship">
+                                <label for="mentorship">Mentorship</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="business-support" name="interests[]" value="business-support">
+                                <label for="business-support">Business Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="crisis-support" name="interests[]" value="crisis-support">
+                                <label for="crisis-support">Crisis Support</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="support-urgency">How soon do you need support?</label>
+                        <select id="support-urgency" name="support-urgency">
+                            <option value="">Select urgency level</option>
+                            <option value="immediate">Immediate (Crisis support needed)</option>
+                            <option value="soon">Within a week</option>
+                            <option value="month">Within a month</option>
+                            <option value="exploring">Just exploring options</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Get My Personalized Plan</button>
+                </form>
+            </div>
+
+            <!-- Immediate Support Options -->
+            <div class="support-options">
+                <div class="support-card">
+                    <h3>🚨 Need Immediate Help?</h3>
+                    <p>If you're experiencing a mental health crisis, access our Creative Care Line for immediate support from trained counselors.</p>
+                    <a href="contact.html" class="cta-button">Access Crisis Support</a>
+                </div>
+
+                <div class="support-card">
+                    <h3>🤝 Join Support Groups</h3>
+                    <p>Connect with peer support groups where you can share experiences and learn from other creatives facing similar challenges.</p>
+                    <a href="community.html" class="cta-button">Join Groups</a>
+                </div>
+
+                <div class="support-card">
+                    <h3>📚 Access Resources</h3>
+                    <p>Explore our library of mental health resources, workshops, and educational content designed specifically for creatives.</p>
+                    <a href="programs.html" class="cta-button">Browse Resources</a>
+                </div>
+
+                <div class="support-card">
+                    <h3>💬 Get In Touch</h3>
+                    <p>Have questions or need personalized guidance? Our team is here to help you navigate your wellness journey.</p>
+                    <a href="contact.html" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div style="margin-top: 60px; text-align: center; padding: 40px; background: #f8f8f8; border-radius: 16px;">
+                <h3 style="margin-bottom: 20px; color: #1a1a1a;">100% Free & Confidential</h3>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.7; max-width: 700px; margin: 0 auto;">
+                    All our services are completely free and accessible to creatives, students, and allies across Africa. Your privacy and confidentiality are our top priorities. We believe that mental wellness support should be available to everyone, regardless of their economic situation.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.querySelector('.assessment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get urgency level
+            const urgency = document.getElementById('support-urgency').value;
+            
+            // Show immediate support message for crisis situations
+            if (urgency === 'immediate') {
+                alert('We understand you need immediate support. Please contact our Creative Care Line immediately or reach out via our contact page. Your safety and wellbeing are our top priority.');
+                window.location.href = 'contact.html';
+                return;
+            }
+            
+            // For other cases, show success message
+            alert('Thank you for completing the assessment! We will contact you within 24-48 hours with your personalized plan. In the meantime, feel free to explore our programs and join our community.');
+            
+            // Optionally redirect to community page
+            setTimeout(() => {
+                window.location.href = 'community.html';
+            }, 2000);
+        });
+
+        // Smooth scroll to assessment
+        document.querySelector('a[href="#assessment"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('assessment').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    </script>
+</body>
+</html>
