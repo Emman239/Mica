@@ -41,6 +41,33 @@
                 background-attachment: scroll;
             }
         }
+
+        /* iPhone-specific optimizations */
+        @media only screen and (max-width: 430px) and (orientation: portrait) {
+            body {
+                background-size: cover;
+                background-position: center center;
+                background-attachment: scroll;
+            }
+        }
+
+        /* iPhone Pro Max and larger iPhones */
+        @media only screen and (max-width: 430px) and (min-height: 800px) and (orientation: portrait) {
+            body {
+                background-size: 100% auto;
+                background-position: center top;
+                background-repeat: no-repeat;
+            }
+        }
+
+        /* iPhone landscape mode */
+        @media only screen and (max-height: 430px) and (orientation: landscape) {
+            body {
+                background-size: auto 100%;
+                background-position: center center;
+                background-attachment: scroll;
+            }
+        }
         
         body::before {
             content: '';
